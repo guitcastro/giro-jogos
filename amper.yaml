@@ -1,0 +1,32 @@
+project:
+  name: redwood-hello-world
+  version: 0.1.0
+  kotlin:
+    version: "1.9.20"
+  plugins:
+    - id: org.jetbrains.kotlin.multiplatform
+      version: "1.9.20"
+    - id: org.jetbrains.kotlin.native.cocoapods
+      version: "1.9.20"
+    - id: io.github.dankimio.amper
+      version: "0.8.1"
+  dependencies:
+    commonMain:
+      - "org.jetbrains.kotlin:kotlin-stdlib-common"
+      - "app.cash.redwood:redwood-core:0.7.0"
+    jvmMain:
+      - "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+      - "app.cash.redwood:redwood-layout-jvm:0.7.0"
+    jsMain:
+      - "org.jetbrains.kotlin:kotlin-stdlib-js"
+      - "app.cash.redwood:redwood-layout-js:0.7.0"
+    androidMain:
+      - "org.jetbrains.kotlin:kotlin-stdlib"
+      - "app.cash.redwood:redwood-layout-android:0.7.0"
+    iosMain:
+      - "app.cash.redwood:redwood-layout-ios:0.7.0"
+  targets:
+    - jvm
+    - js
+    - android
+    - ios
