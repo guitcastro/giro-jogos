@@ -1,0 +1,30 @@
+# Giro Jogos - Multiplatform Redwood Application
+# Built with Amper and Kotlin Multiplatform
+
+product:
+  type: app
+  platforms: [jvm, android, iosArm64, iosSimulatorArm64, js]
+
+dependencies:
+  # Redwood UI framework v0.7.0
+  - app.cash.redwood:redwood-layout-view:0.7.0
+  - app.cash.redwood:redwood-widget:0.7.0
+  - app.cash.redwood:redwood-lazylayout-compose:0.7.0
+  
+  # Platform-specific dependencies
+  - $android:
+    - androidx.appcompat:appcompat:1.6.1
+    - androidx.activity:activity-compose:1.8.0
+  
+  - $ios:
+    - app.cash.redwood:redwood-layout-uiview:0.7.0
+
+settings:
+  kotlin:
+    languageVersion: 2.0
+  jvm:
+    target: 17
+  android:
+    minSdk: 24
+    compileSdk: 34
+    namespace: giros.jogo

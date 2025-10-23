@@ -1,0 +1,53 @@
+# Amper
+.amper/
+build/
+out/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Gradle (if used as fallback)
+.gradle/
+gradle/
+gradlew
+gradlew.bat
+
+# Kotlin
+*.class
+*.jar
+*.kotlin_module
+
+# Android
+*.apk
+*.ap_
+*.aab
+local.properties
+
+# iOS
+*.xcworkspace
+*.xcodeproj
+Pods/
+*.ipa
+DerivedData/
+
+# macOS
+.DS_Store
+
+# Build outputs
+dist/
+*.js.map
+
+# Logs
+*.log
+
+# Node modules (for JS builds)
+node_modules/
+
+# Temporary files
+*.swp
+*.swo
+*~
+.tmp/

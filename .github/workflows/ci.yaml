@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main, copilot/add-multiplatform-redwood-setup]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 17
+      - name: Install Amper
+        run: curl -fsSL -o amper https://jb.gg/amper-latest-wrapper.sh && chmod +x amper && ./amper update -c
+      - name: Build all platforms
+        run: ./amper build
+      - name: Run JVM tests
+        run: ./amper test jvm
+      - name: Build for Web (JS)
+        run: ./amper build --platform js
+
+  ios-build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 17
+      - name: Install Amper
+        run: curl -fsSL -o amper https://jb.gg/amper-latest-wrapper.sh && chmod +x amper && ./amper update -c
+      - name: Build for iOS (Arm64)
+        run: ./amper build --platform iosArm64
+      - name: Build for iOS (Simulator Arm64)
+        run: ./amper build --platform iosSimulatorArm64
