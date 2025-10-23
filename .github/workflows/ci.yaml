@@ -15,18 +15,14 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: 17
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
       - name: Install Amper
-        run: pip install amper
+        run: curl -fsSL -o amper https://jb.gg/amper-latest-wrapper.sh && chmod +x amper && ./amper update -c
       - name: Build all platforms
-        run: amper build
+        run: ./amper build
       - name: Run JVM tests
-        run: amper test jvm
+        run: ./amper test jvm
       - name: Build for Web (JS)
-        run: amper build --platform js
+        run: ./amper build --platform js
 
   ios-build:
     runs-on: macos-latest
@@ -37,13 +33,9 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: 17
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
       - name: Install Amper
-        run: pip install amper
+        run: curl -fsSL -o amper https://jb.gg/amper-latest-wrapper.sh && chmod +x amper && ./amper update -c
       - name: Build for iOS (Arm64)
-        run: amper build --platform iosArm64
+        run: ./amper build --platform iosArm64
       - name: Build for iOS (Simulator Arm64)
-        run: amper build --platform iosSimulatorArm64
+        run: ./amper build --platform iosSimulatorArm64
